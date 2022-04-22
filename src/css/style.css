@@ -1,0 +1,23 @@
+
+.indications ul {
+  list-style: none; 
+}
+
+.indications ul li::before {
+  content: "\2022";  
+  color: #32cd32; 
+  font-weight: bold; 
+  display: inline-block; 
+  width: 1em; 
+  margin-left: -1em; 
+}
+
+
+@media (max-width: 1000px) {
+
+  .suggest-learning-btn {
+    height: 75px;
+  }
+
+
+}

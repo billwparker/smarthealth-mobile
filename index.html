@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>PatientPoint Example - SMART App</title>
+
+    <!-- <link rel='stylesheet' type='text/css' href='./src/css/example-smart-app.css'> -->
+
+    <link href="assets/css/theme.css" rel="stylesheet" />
+
+    <link rel='stylesheet' type='text/css' href='./src/css/style.css'>
+
+    <!--
+      Temporarily disable cerner-smart-embeddable-lib
+    <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
+    -->
+  </head>
+
+  <body>
+
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand" href="index.html"><img src="assets/img/ppt_logo.png" height="31" alt="logo" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#pt-1">Lab Results</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#topics">Learning</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#resources">Resources</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- <section class="pt-17"> -->
+      <section class="pt-1">
+        <div class="container">
+
+          <div class="row align-items-center">
+
+            <div class="py-3">
+              <p class="mb-3 lead text-secondary">
+              <span id="main-wait">
+                <img style="display: block; margin-left: auto; margin-right: auto;" src="assets/img/wait.gif" alt="Please wait ..." width=31 height=31>
+              </span>
+
+              <span id="greeting text-center" style="display: none; font-size:24px; text-align: center;">
+                <span id="fname"></span>, we are glad you are here!
+              </span>
+            </div>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col-md-12 text-center">
+              <div class="mb-4 fs-4 fw-bold">
+                <div>
+                  Your Dashboard
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-items-center">
+
+            <div class="col-md-4">
+
+              <div class="card" style="width: 99%; height: 16rem; background-color: #f4f0ec">
+                <div class="card-body">
+
+                  <table id="demo-table" style="display: block; font-size: 14px;">
+                    <tr>
+                      <th>Name: </th>
+                      <td id='fullname'></td>
+                    </tr>
+                    <tr>
+                      <th>Gender: </th>
+                      <td id='gender'></td>
+                    </tr>
+                    <tr>
+                      <th>Date of Birth:&nbsp</th>
+                      <td id='birthdate'></td>
+                    </tr>
+          
+                  </table>
+    
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+              <div class="card" style="width: 99%; height: 16rem; background-color: #f4f0ec">
+                <div class="card-body indications">
+
+                  <ul style="margin-top: 14px; font-size: 17px;">
+                    <li>
+                      Diabetic
+                    </li>
+                    <li>
+                      Prostate Cancer
+                    </li>
+                  </ul>
+
+                  <div  class="text-center"><a class="btn btn-success me-3 btn-lg" style="margin-top: 25px; font-size:14px;" href="#" role="button">Play video</a>
+
+                </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+
+              <div class="card" style="width: 99%; height: 16rem; background-color: #f4f0ec">
+                <div class="card-body">
+
+                  <table style="font-size: 14px;">
+
+                    <tr>
+                      <th>Creatinine:&nbsp</th>
+                      <td id='creatinine'></td>
+                    </tr>
+                    
+                    <tr>
+                      <th>LDL:&nbsp</th>
+                      <td id='ldl'></td>
+                    </tr>
+                    <tr>
+                      <th>HDL:&nbsp</th>
+                      <td id='hdl'></td>
+                    </tr>
+                    <tr>
+                      <th>Hemoglobin:&nbsp</th>
+                      <td id='hemoglobin'></td>
+                    </tr>
+                    <tr>
+                      <th>Glucose:&nbsp</th>
+                      <td id='glucose'></td>
+                    </tr>
+                    <tr>
+                      <th>Potassium:&nbsp</th>
+                      <td id='potassium'></td>
+                    </tr>
+                    <tr>
+                      <th>Sodium:&nbsp</th>
+                      <td id='sodium'></td>
+                    </tr>
+                  </table>
+      
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <!-- <section> begin ============================-->
+        <!-- 
+          <section class="pt-5" id="topics" style="background-color: lightgray">
+
+          <div class="container">
+
+            <h1 class="fw-bold fs-6 mb-3">Today's Priority Topics</h1>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="card"><img class="card-img-top" src="assets/img/marketing/marketing01.png" alt="" />
+                  <div class="card-body ps-0">
+                    <p class="text-secondary">By <a class="fw-bold text-decoration-none me-1" href="#">Bill Jacobs</a>|<span class="ms-1">03 January 2021</span></p>
+                    <h3 class="fw-bold">Smoking Cessation: </h3>
+                    At vero eos et accusamus et iust.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card"><img class="card-img-top" src="assets/img/marketing/marketing02.png" alt="" />
+                  <div class="card-body ps-0">
+                    <p class="text-secondary">By <a class="fw-bold text-decoration-none me-1" href="#">Jennifer Carperter</a>|<span class="ms-1">03 March 2022</span></p>
+                    <h3 class="fw-bold">Diet & Nutrition: </h3>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card"><img class="card-img-top" src="assets/img/marketing/marketing03.png" alt="" />
+                  <div class="card-body ps-0">
+                    <p class="text-secondary">By <a class="fw-bold text-decoration-none me-1" href="#">George Allison</a>|<span class="ms-1">03 May 2021</span></p>
+                    <h3 class="fw-bold">Sleep and Mental Health: </h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+  
+        </section>
+        -->
+        <section class="pt-5" id="topics" style="background-color: lightgray">
+
+          <div class="container">
+
+            <h1 class="fw-bold fs-4 mb-3">Today's Priority Topics</h1>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="fw-bold">Managing Blood Pressure: </div>
+              </div>
+              <div class="col-md-6">
+                <a class="btn btn-success me-3 btn-sm" href="#" role="button" style="margin-bottom:5px; width: 175px">View Anatomical</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="fw-bold">Influenza Vaccination Status: </div>
+              </div>
+              <div class="col-md-6">
+                <a class="btn btn-success me-3 btn-sm" href="#" role="button" style="margin-bottom:5px; width: 175px">Flu Index in Your Area</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                    <div class="fw-bold">Screening Results and Recommendations: </div>
+              </div>
+              <div class="col-md-6">
+                <a class="btn btn-success me-3 btn-sm" style="width: 175px" href="#" role="button">Send Results</a>
+              </div>
+
+            </div>
+          </div> 
+  
+        </section>
+
+
+
+      <!-- <section> begin ============================ -->
+        <!-- <section class="pt-5" id="resources">
+
+          <div class="container">
+            <h1 class="fw-bold fs-4 mb-3">Resources</h1>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="card"><img class="card-img-top" src="" alt="" />
+                  <div class="card-body ps-0">
+                    <h3 class="fw-bold">Influenza Vaccination Status: </h3>
+                    At vero eos et accusamus et iust
+
+                    <div style="margin-top: 74px;" class="text-center text-md-start"><a class="btn btn-warning me-3 btn-md" href="#" role="button">Flu Index in Area</a></div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card"><img class="card-img-top" src="" alt="" />
+                  <div class="card-body ps-0">
+                    <h3 class="fw-bold">Managing Blood Pressure: </h3>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
+
+                    <div style="margin-top: 74px;" class="text-center text-md-start"><a style="width: 200px;" class="btn btn-warning me-3 btn-md" href="#" role="button">Explore</a></div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card"><img class="card-img-top" src="" alt="" />
+                  <div class="card-body ps-0">
+                    <h3 class="fw-bold">Screening Results and Recommendations: </h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.
+
+                    <div style="margin-top: 20px;" class="text-center text-md-start"><a class="btn btn-warning me-3 btn-md" href="#" role="button">Send Results</a></div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </section> -->
+
+        <section class="pt-5" id="resources">
+
+          <div class="container">
+            <h1 class="fw-bold fs-4 mb-3">Addional Suggested Learning</h1>
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="card"><img class="card-img-top" src="" alt="" />
+                  <div class="card-body ps-0">
+
+                    <div style="margin-top: 4px;" class="text-center text-md-start">
+                      <a class="btn btn-success me-3 btn-md" href="#" role="button">Diet and Nutrition</a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card"><img class="card-img-top" src="" alt="" />
+                  <div class="card-body ps-0">
+
+                    <div style="margin-top: 4px;" class="text-center text-md-start">
+                      <a style="width: 150px;" class="btn btn-success me-3 btn-md suggest-learning-btn" href="#" role="button">Exercise</a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card"><img class="card-img-top" src="" alt="" />
+                  <div class="card-body ps-0">
+
+                    <div style="margin-top: 4px;" class="text-center text-md-start">
+                      <a class="btn btn-success me-3 btn-md" href="#" role="button">Sleep and Heart Health</a>
+                    </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </section> 
+
+
+
+      <div id='errors'>
+      </div>
+
+      <div id="loading" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+
+      <div id='holder' >
+        <!-- <h2>PatientPoint Example - SMART App</h2> -->
+
+        <!-- <h2>Patient</h2>
+        <table>
+          <tr>
+            <th>First Name:</th>
+            <td id='fname'></td>
+          </tr>
+          <tr>
+            <th>Last Name:</th>
+            <td id='lname'></td>
+          </tr>
+          <tr>
+            <th>Gender:</th>
+            <td id='gender'></td>
+          </tr>
+          <tr>
+            <th>Date of Birth:</th>
+            <td id='birthdate'></td>
+          </tr>
+        </table> -->
+      </div>
+    </main>
+
+    <!-- Required JS files to enable this page to embed within an MPage -->
+    <!--
+      Temporarily disable cerner-smart-embeddable-lib
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
+      <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
+    -->
+
+    <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+    <!-- Application-level javascript-->
+    <script src='./src/js/example-smart-app-mobile.js'></script>
+
+    <!-- FHIR Client JS Library -->
+    <script src='./lib/js/fhir-client-v0.1.12.js'></script>
+
+    <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
+    <!-- https://github.com/cerner/fhir-client-cerner-additions -->
+    <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      extractData().then(
+        //Display Patient Demographics and Observations if extractData was success
+        function(p) {
+          drawVisualization(p);
+        },
+
+        //Display 'Failed to call FHIR Service' if extractData failed
+        function() {
+          $('#loading').hide();
+          $('#errors').html('<p> Failed to call FHIR Service </p>');
+        }
+      );
+    </script>
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="vendors/fontawesome/all.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Volkhov:wght@700&amp;display=swap" rel="stylesheet">
+
+  </body>
+
+</html>
