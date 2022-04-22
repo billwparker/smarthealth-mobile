@@ -8,7 +8,6 @@ Todo:
    - Available data (Ex.: vitals, demographics, conditions, lab reports, immunization, medications, medical implants, appointments, procedures/surgeries, images, financial/billing information, insurance information, allergies, social history notes (Ex.: smoking 12 years))
 
 
-
 PPT
 ---
 

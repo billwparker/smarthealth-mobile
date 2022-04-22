@@ -41,6 +41,7 @@
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
+          var maritalStatus = patient.maritalStatus.text;
 
           var fname = '';
           var lname = '';
@@ -82,6 +83,7 @@
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = titleCase(gender);
+          p.maritalStatus = titleCase(maritalStatus);
           p.fname = titleCase(fname);
           p.lname = titleCase(lname);
           p.fullname = titleCase(fullname);
@@ -162,6 +164,7 @@
       lname: {value: ''},
       fullname: {value: ''},
       gender: {value: ''},
+      maritalStatus: {value: ''},
       birthdate: {value: ''},
       height: {value: ''},
       weight: {value: ''},
@@ -245,6 +248,7 @@
     $('#lname').html(p.lname);
     $('#fullname').html(p.fullname);
     $('#gender').html(p.gender);
+    $('#marital-status').html(p.maritalStatus);
     $('#birthdate').html(p.birthdate);
     $('#height').html(p.height);
     $('#weight').html(p.weight);
