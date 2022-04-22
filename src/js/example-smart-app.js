@@ -14,6 +14,16 @@
       }).join(' ');
     }
 
+    function formatPhoneNumber(phoneNumberString) {
+      var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+      var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+      if (match) {
+        var intlCode = (match[1] ? '+1 ' : '');
+        return [intlCode, '(', match[2], ') ', match[3], '-', match[4]].join('');
+      }
+      return null;
+    }    
+
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
 
@@ -39,9 +49,23 @@
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
+
+          console.log(patient);
+
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
+          var maritalStatus = patient.maritalStatus.text;
 
+          var phoneNumber = ""
+
+          if (patient.telecom.length > 0) {
+
+            console.log(patient.telecom)
+            console.log(patient.telecom[0].period)
+            console.log(patient.telecom[0].value)
+            phoneNumber = formatPhoneNumber(patient.telecom[0].value);
+          }
+          
           var fname = '';
           var lname = '';
           var fullname = '';
@@ -82,6 +106,8 @@
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = titleCase(gender);
+          p.phoneNumber = phoneNumber;
+          p.maritalStatus = titleCase(maritalStatus)
           p.fname = titleCase(fname);
           p.lname = titleCase(lname);
           p.fullname = titleCase(fullname);
@@ -162,6 +188,8 @@
       lname: {value: ''},
       fullname: {value: ''},
       gender: {value: ''},
+      phoneNumber: {value: ''},
+      maritalStatus: {value: ''},
       birthdate: {value: ''},
       height: {value: ''},
       weight: {value: ''},
@@ -245,6 +273,8 @@
     $('#lname').html(p.lname);
     $('#fullname').html(p.fullname);
     $('#gender').html(p.gender);
+    $('#marital-status').html(p.maritalStatus);
+    $('#phone-number').html(p.phoneNumber);
     $('#birthdate').html(p.birthdate);
     $('#height').html(p.height);
     $('#weight').html(p.weight);
