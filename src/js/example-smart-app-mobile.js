@@ -58,9 +58,6 @@
 
           if (patient.telecom.length > 0) {
 
-            console.log(patient.telecom)
-            console.log(patient.telecom[0].period)
-            console.log(patient.telecom[0].value)
             phoneNumber = formatPhoneNumber(patient.telecom[0].value);
           }
 
